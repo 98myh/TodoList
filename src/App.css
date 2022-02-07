@@ -29,6 +29,7 @@
   height: 35px;
 }
 .ListPlus button {
+  outline: none;
   cursor: pointer;
   font-size: 16px;
   width: 80px;
@@ -40,4 +41,45 @@
   background-color: aqua;
   box-sizing: border-box;
   height: 35px;
+}
+
+/*Lists*/
+.Lists {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/*ListItme*/
+.info {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info span {
+  text-align: left;
+  width: 500px;
+}
+.info button {
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  width: 80px;
+  height: 30px;
+}
+
+.checkBtn {
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background-color: rgb(34, 249, 190);
+}
+.deleteBtn {
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: rgb(248, 20, 21);
 }
