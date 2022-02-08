@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
-const ListPlus = ({ onCreate }) => {
+const ListEdit = ({ onCreate }) => {
   const contentRef = useRef();
   const [content, setContent] = useState("");
 
@@ -11,7 +11,6 @@ const ListPlus = ({ onCreate }) => {
       return;
     }
     onCreate(content);
-    console.log(content);
     alert("저장성공");
     setContent("");
   };
@@ -28,4 +27,4 @@ const ListPlus = ({ onCreate }) => {
     </div>
   );
 };
-export default ListPlus;
+export default React.memo(ListEdit);

@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import MyHeader from "../components/MyHeader";
-import ListPlus from "../components/ListPlus";
+import ListEdit from "../components/ListEdit";
 import Lists from "../components/Lists";
 
 const Home = () => {
@@ -11,19 +11,26 @@ const Home = () => {
     curDate.getMonth() + 1
   }월 ${curDate.getDate()}일`;
 
-  const onCreate = (content) => {
+  const onCreate = useCallback((content) => {
     const newItem = {
       content,
       id: dataId.current,
     };
     dataId.current += 1;
-    setData([...data, newItem]);
-  };
+    setData((data) => [...data, newItem]); //함수형 업데이트
+  }, []);
+  const onRemove = useCallback((targetId) => {
+    setData((data) => data.filter((it) => it.id !== targetId));
+  }, []);
+
+  const onCheck = useCallback(() => {
+    setData((data) => data.map((it) => it));
+  }, []);
   return (
     <>
       <MyHeader headText={headText} />
-      <ListPlus onCreate={onCreate} />
-      <Lists list={data} />
+      <ListEdit onCreate={onCreate} />
+      <Lists list={data} onRemove={onRemove} onCheck={onCheck} />
     </>
   );
 };

@@ -3,6 +3,11 @@
 * {
   font-family: "Jua", sans-serif;
 }
+button {
+  cursor: pointer;
+  outline: none;
+}
+
 /*MyHeader*/
 .myheader {
   display: flex;
@@ -29,8 +34,6 @@
   height: 35px;
 }
 .ListPlus button {
-  outline: none;
-  cursor: pointer;
   font-size: 16px;
   width: 80px;
   border-radius: 5px;
@@ -51,8 +54,12 @@
   align-items: center;
   text-align: center;
 }
+.Lists img {
+  width: 480px;
+  height: 480px;
+}
 
-/*ListItme*/
+/*ListItem*/
 .info {
   margin-bottom: 30px;
   display: flex;
@@ -60,12 +67,12 @@
 }
 
 .info span {
+  font-size: 20px;
   text-align: left;
   width: 500px;
 }
 .info button {
   font-size: 16px;
-  cursor: pointer;
   border: none;
   width: 80px;
   height: 30px;
@@ -82,4 +89,13 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   background-color: rgb(248, 20, 21);
+}
+
+.noneLine {
+  text-decoration: none;
+  color: black;
+}
+.checkLine {
+  text-decoration: line-through;
+  color: #ccc;
 }
