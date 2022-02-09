@@ -1,6 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { DispatchContext } from "../App";
 
-const ListEdit = ({ onCreate }) => {
+const ListEdit = () => {
+  const { onCreate } = useContext(DispatchContext);
   const contentRef = useRef();
   const [content, setContent] = useState("");
 
@@ -15,13 +17,20 @@ const ListEdit = ({ onCreate }) => {
     setContent("");
   };
 
+  const onKeyPress = (e) => {
+    if (e.key == "Enter") {
+      contentSubmit();
+    }
+  };
+
   return (
     <div className="ListPlus">
       <input
         ref={contentRef}
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        placeholder="할 일을 입력해주세요!"
+        placeholder="오늘 할 일을 입력해주세요!"
+        onKeyPress={onKeyPress}
       />
       <button onClick={contentSubmit}>추가하기</button>
     </div>

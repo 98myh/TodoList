@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { DispatchContext } from "../App";
 
-const ListItem = ({ onCheck, onRemove, content, id }) => {
+const ListItem = ({ content, id }) => {
+  const { onCheck, onRemove } = useContext(DispatchContext);
   const [check, setCheck] = useState(true);
   const toggleCheck = () => {
     setCheck(!check);
