@@ -4,6 +4,14 @@ import { stateContext } from "../App";
 import ListItem from "./ListItem";
 const Lists = () => {
   const list = useContext(stateContext);
+
+  const allClear = () => {
+    if (window.confirm("모든 할 일을 삭제하시겠습니까?")) {
+      console.log(localStorage + "삭제");
+      localStorage.clear();
+      window.location.replace("/");
+    }
+  };
   return (
     <div className="Lists">
       {list.length !== 0 ? (
@@ -14,6 +22,9 @@ const Lists = () => {
               <ListItem key={it.id} {...it} />
             ))}
           </div>
+          <button className="allClear" onClick={allClear}>
+            모든 할일 삭제하기
+          </button>
         </div>
       ) : (
         <div></div>

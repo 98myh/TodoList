@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useReducer,
-  useRef,
-} from "react";
+import React, { useCallback, useEffect, useReducer, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -57,7 +51,10 @@ function App() {
   }, []);
 
   const onCreate = useCallback((content) => {
-    dispatch({ type: "CREATE", data: { content, id: dataId.current } });
+    dispatch({
+      type: "CREATE",
+      data: { content, id: dataId.current },
+    });
     dataId.current += 1;
   }, []);
 
@@ -69,12 +66,9 @@ function App() {
     dispatch({ type: "CHECK" });
   }, []);
 
-  const memoizedDispatches = useMemo(() => {
-    return { onCreate, onRemove, onCheck };
-  }, []);
   return (
     <stateContext.Provider value={data}>
-      <DispatchContext.Provider value={memoizedDispatches}>
+      <DispatchContext.Provider value={{ onCreate, onRemove, onCheck }}>
         <BrowserRouter>
           <div className="App">
             <Routes>

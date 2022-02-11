@@ -1,11 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
-
 * {
   font-family: "Jua", sans-serif;
 }
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 button {
+  line-height: 16px;
+  font-size: 16px;
+  white-space: nowrap;
   cursor: pointer;
   outline: none;
+  overflow: hidden;
+  color: black;
+}
+
+/* 650이상일때 */
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+.App {
+  min-height: 100vh;
 }
 
 /*MyHeader*/
@@ -34,7 +56,6 @@ button {
   height: 35px;
 }
 .ListPlus button {
-  font-size: 16px;
   width: 80px;
   border-radius: 5px;
   border-top-left-radius: 0;
@@ -63,6 +84,18 @@ button {
   height: 480px;
 }
 
+.allClear {
+  margin: 0 auto;
+  font-size: 18px;
+  border-radius: 5px;
+  color: white;
+  width: 150px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: rgb(39, 38, 38);
+}
+
 /*ListItem*/
 .info {
   margin-bottom: 30px;
@@ -71,12 +104,15 @@ button {
 }
 
 .info span {
+  width: 100%;
   font-size: 20px;
   text-align: left;
-  width: 500px;
+}
+.info_btns {
+  margin-left: 8px;
+  display: flex;
 }
 .info button {
-  font-size: 16px;
   border: none;
   width: 80px;
   height: 30px;
@@ -108,4 +144,22 @@ button {
 .checkLine {
   text-decoration: line-through;
   color: #ccc;
+}
+
+/* 650미만일때 */
+@media (max-width: 650px) {
+  .App {
+    width: 90vw;
+  }
+  button {
+    line-height: 13px;
+    font-size: 13px;
+  }
+  .ListPlus input {
+    width: 300px;
+  }
+  .Lists img {
+    width: 300px;
+    height: 300px;
+  }
 }

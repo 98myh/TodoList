@@ -18,7 +18,7 @@ const ListEdit = () => {
   };
 
   const onKeyPress = (e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       contentSubmit();
     }
   };
