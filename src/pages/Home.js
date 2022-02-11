@@ -8,7 +8,6 @@ const Home = () => {
   const headText = `${curDate.getFullYear()}년 ${
     curDate.getMonth() + 1
   }월 ${curDate.getDate()}일`;
-
   return (
     <div className="Home">
       <MyHeader headText={headText} />

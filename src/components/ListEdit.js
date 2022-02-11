@@ -1,7 +1,9 @@
 import React, { useContext, useRef, useState } from "react";
 import { DispatchContext } from "../App";
+import { getStringDate } from "../util/date";
 
 const ListEdit = () => {
+  const [date] = useState(getStringDate(new Date()));
   const { onCreate } = useContext(DispatchContext);
   const contentRef = useRef();
   const [content, setContent] = useState("");
@@ -12,7 +14,8 @@ const ListEdit = () => {
       contentRef.current.focus();
       return;
     }
-    onCreate(content);
+    onCreate(content, date);
+
     alert("저장성공");
     setContent("");
   };

@@ -1,7 +1,14 @@
-import React, { useCallback, useEffect, useReducer, useRef } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
+import { getStringDate } from "./util/date";
 
 const reducer = (state, action) => {
   let newState = [];
@@ -25,10 +32,15 @@ const reducer = (state, action) => {
       newState = state.map((it) => it);
       break;
     }
+    case "CLEAR": {
+      newState = [];
+      break;
+    }
     default:
       return state;
   }
   localStorage.setItem("todo", JSON.stringify(newState));
+  console.log(newState);
   return newState;
 };
 
@@ -38,22 +50,29 @@ export const DispatchContext = React.createContext();
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
   const dataId = useRef(1);
-
+  const [newDay] = useState(getStringDate(new Date()));
   useEffect(() => {
     const localData = localStorage.getItem("todo");
     if (localData) {
       const List = JSON.parse(localData);
+      if (List[0].date !== newDay) {
+        localStorage.clear();
+        dispatch({ typd: "CLEAR", data: List });
+        console.log("데이터 모두 삭제");
+        window.location.replace("/");
+      }
       if (List.length >= 1) {
         dataId.current = parseInt(List[List.length - 1].id) + 1;
         dispatch({ type: "INIT", data: List });
+        console.log("데이터 넣기");
       }
     }
   }, []);
 
-  const onCreate = useCallback((content) => {
+  const onCreate = useCallback((content, date) => {
     dispatch({
       type: "CREATE",
-      data: { content, id: dataId.current },
+      data: { content, id: dataId.current, date: getStringDate(new Date()) },
     });
     dataId.current += 1;
   }, []);
