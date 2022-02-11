@@ -40,7 +40,6 @@ const reducer = (state, action) => {
       return state;
   }
   localStorage.setItem("todo", JSON.stringify(newState));
-  console.log(newState);
   return newState;
 };
 
@@ -55,16 +54,14 @@ function App() {
     const localData = localStorage.getItem("todo");
     if (localData) {
       const List = JSON.parse(localData);
-      if (List[0].date !== newDay) {
-        localStorage.clear();
-        dispatch({ typd: "CLEAR", data: List });
-        console.log("데이터 모두 삭제");
-        window.location.replace("/");
-      }
       if (List.length >= 1) {
+        if (List[0].date !== newDay) {
+          localStorage.clear();
+          dispatch({ typd: "CLEAR", data: List });
+          window.location.replace("/");
+        }
         dataId.current = parseInt(List[List.length - 1].id) + 1;
         dispatch({ type: "INIT", data: List });
-        console.log("데이터 넣기");
       }
     }
   }, []);
