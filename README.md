@@ -13,4 +13,4 @@
 <br/>
 ### -메인화면2-
 ![image](https://user-images.githubusercontent.com/90823418/175886914-58a25240-9230-487a-bee3-3eb48f1f496b.png)
-</div>
+</div> 
